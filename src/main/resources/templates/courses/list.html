@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layouts/main">
+<head>
+	<title>List Courses</title>
+</head>
+<body>
+		
+	<div layout:fragment="content">
+	
+		<h2>Courses</h2>
+		
+		<div th:if="${message}" class="alert alert-success" role="alert">
+			<p th:text="${message}">success message</p>
+		</div>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Course Code</th>
+					<th>Course Name VN</th>
+					<th>Course Name EN</th>
+					<th>Course Credits</th>
+					<th>Syllabus</th>
+					<th>Course Version Code</th>
+					<th>Course Version Code</th>
+					<th>Course Version Code</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="course : ${courses}">
+					<td th:text="${course.courseCode}">course_code</td>
+					<td th:text="${course.courseNameVn}">course_name_vn</td>
+					<td th:text="${course.courseNameEn}">course_name_en</td>
+					<td th:text="${course.courseCredits}">course_name_vn</td>
+					<td th:text="${course.courseLinktoSyllabus}">course_linkto_syllabus</td>
+					<td th:text="${course.courseVersionCode}">course_linkto_syllabus</td>
+					
+					<td th:text="${#calendars.format(course.corseIntroducedDate,'dd-MM-yyyy')}">posted on</td>
+					<td th:text="${#calendars.format(course.courseAppliedYear,'dd-MM-yyyy')}">posted on</td>
+				
+					<td><a href="#" th:href="@{/admin/course/} + ${course.courseId}">View</a></td>
+					<td><a href="#" th:href="@{/admin/course/edit/} + ${course.courseId}">Edit</a></td>
+					<td><a href="#" th:href="@{/admin/course/delete/} + ${course.courseId}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<a th:href="@{/admin/course/create}">Add New Post</a>
+		<br/><br/>
+		
+		<p th:if="${courses.size() == 0}">
+			<div class="alert alert-warning" role="alert">No Posts Found.</div>
+		</p>
+		
+	</div>
+		
+</body>
+</html>

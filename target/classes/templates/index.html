@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layouts/main">	
+<head>
+	<title>Testing System Home Page</title>
+</head>
+<body>
+		
+	<div layout:fragment="content">
+		
+		<h2>Welcome to the new generation of Testing System</h2>
+		<div class="row">
+			<div class="col-md-12">
+ 				<p>Currently, there are several popular testing systems, for examples, embedded tests in Sakai [14] and Moodle [11], TestMaker [8] and TAO [9]. However, none of them enable learning-quality assessment, i.e., to infer the satisfaction of the educational program’s objectives and course’s learning outcomes from the results of tests. This kind of learning-quality assessment is best described in ABET [6] and CDIO [4].</p>			
+ 			</div>
+		</div>
+	    
+	    <article>
+			<header>
+				<h2 th:text="${post.title}">title</h2>
+				<p th:text="${#calendars.format(post.postedOn, 'M/dd/yyyy hh:mm:ss a')}">postedOn</p>
+			</header>
+			<section th:utext="${post.teaser}">
+				teaser
+			</section>
+			<footer>
+				<a th:href="|@{/posts/view/}${post.slug}|">Read More</a>
+				<address>
+					Posted By <a th:href="|mailto:${post.author.email}|"> <span th:text="|${post.author.firstName} ${post.author.lastName}|">author</span></a>
+				</address>
+			</footer>
+			<hr/>
+		</article>
+		
+	</div>
+		
+</body>
+</html>
