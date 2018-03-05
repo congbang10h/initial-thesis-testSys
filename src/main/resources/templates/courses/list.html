@@ -26,6 +26,10 @@
 					<th>Course Version Code</th>
 					<th>Course Version Code</th>
 					<th>Course Version Code</th>
+					
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,14 +44,14 @@
 					<td th:text="${#calendars.format(course.corseIntroducedDate,'dd-MM-yyyy')}">posted on</td>
 					<td th:text="${#calendars.format(course.courseAppliedYear,'dd-MM-yyyy')}">posted on</td>
 				
-					<td><a href="#" th:href="@{/admin/course/} + ${course.courseId}">View</a></td>
-					<td><a href="#" th:href="@{/admin/course/edit/} + ${course.courseId}">Edit</a></td>
-					<td><a href="#" th:href="@{/admin/course/delete/} + ${course.courseId}">Delete</a></td>
+					<td><a href="#" th:href="@{/admin/course/} + ${course.courseId}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+					<td><a href="#" th:href="@{/admin/course/edit/} + ${course.courseId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a href="#" th:href="@{/admin/course/delete/} + ${course.courseId}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 			</tbody>
 		</table>
 		
-		<a th:href="@{/admin/course/create}">Add New Post</a>
+		<a th:href="@{/admin/course/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Add New Course</a>
 		<br/><br/>
 		
 		<p th:if="${courses.size() == 0}">
