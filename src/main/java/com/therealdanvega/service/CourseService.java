@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.therealdanvega.domain.Course;
+import com.therealdanvega.domain.Post;
 import com.therealdanvega.repository.CourseRepository;
+import com.therealdanvega.repository.PostRepository;
 
 @Service
 public class CourseService {
@@ -20,5 +22,13 @@ public class CourseService {
 	
 	public List<Course> list(){
 		return courseRepository.findAllByOrderByCourseCodeAsc();
+	}
+	
+	public void deleteById(Integer id) {
+		courseRepository.delete(id);
+	}
+	
+	public Course getById(Integer id) {
+		return courseRepository.findOne(id);
 	}
 }
