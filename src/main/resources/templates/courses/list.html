@@ -41,9 +41,9 @@
 					<td th:text="${course.courseLinktoSyllabus}">course_linkto_syllabus</td>
 					<td th:text="${course.courseVersionCode}">course_linkto_syllabus</td>
 					
-					<td th:text="${#calendars.format(course.corseIntroducedDate,'dd-MM-yyyy')}">posted on</td>
-					<td th:text="${#calendars.format(course.courseAppliedYear,'dd-MM-yyyy')}">posted on</td>
-				
+					<!--<td th:text="${#calendars.format(course.corseIntroducedDate,'dd-MM-yyyy')}">posted on</td>-->
+					<!--<td th:text="${#calendars.format(course.courseAppliedYear,'dd-MM-yyyy')}">posted on</td>-->
+				<!---->
 					<td><a href="#" th:href="@{/admin/course/} + ${course.courseId}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 					<td><a href="#" th:href="@{/admin/course/edit/} + ${course.courseId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a href="#" th:href="@{/admin/course/delete/} + ${course.courseId}"><span class="glyphicon glyphicon-trash"></span></a></td>

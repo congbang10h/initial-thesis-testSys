@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -48,16 +48,10 @@
 				            <ul class="dropdown-menu">
 				                <li><a href="/admin/posts/">Posts</a></li>
 				                <li><a href="/admin/authors/">Authors</a></li>
-				                <li><a href="/admin/courses/">Courses</a></li>				                
+				                <li><a href="/admin/courses/">Courses</a></li>
+								<li><a href="/admin/questions/">Question</a></li>
 				            </ul>
-				        </li>	
-				        <!-- <li class="dropdown" th:class="${controllerName.startsWith('Admin')} ? 'dropdown active' : 'dropdown'" sec:authorize="hasRole('ROLE_ADMIN')">
-				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Question <span class="caret"></span></a>
-				            <ul class="dropdown-menu">
-				                <li><a href="/admin/posts/">List question</a></li>
-				                <li><a href="/admin/authors/">Courses</a></li>				                
-				            </ul>
-				        </li>	 -->				        
+				        </li>
 				    </ul>
 				    <div class="navbar-text navbar-right">
 			            Welcome <span sec:authentication="name">Guest</span> | 

@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: crud-start
-Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: bangvancong
-Implementation-Vendor-Id: com.therealdanvega
-Build-Jdk: 1.8.0_152
-Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
-

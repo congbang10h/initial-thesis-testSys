@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.therealdanvega.domain.Course;
-import com.therealdanvega.domain.Post;
 import com.therealdanvega.repository.CourseRepository;
-import com.therealdanvega.repository.PostRepository;
 
 @Service
 public class CourseService {
@@ -30,5 +28,9 @@ public class CourseService {
 	
 	public Course getById(Integer id) {
 		return courseRepository.findOne(id);
+	}
+	
+	public Course save(Course course) {
+		return courseRepository.save(course);
 	}
 }
