@@ -30,7 +30,7 @@
 			<tbody>
 				<tr th:each="post : ${posts}">
 					<td th:text="${post.title}">title</td>
-					<td th:text="${#calendars.format(post.postedOn,'M/dd/yyyy hh:mm:ss a')}">posted on</td>
+					<td th:text="${post.postedOn}">posted on</td>
 					<td th:text="${post.slug}">slug</td>
 					<td th:text="${post.author.firstName + ' ' + post.author.lastName}">author</td>
 					<td><a href="#" th:href="@{/admin/post/} + ${post.id}">View</a></td>

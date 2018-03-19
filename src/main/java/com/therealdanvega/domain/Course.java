@@ -1,6 +1,8 @@
 package com.therealdanvega.domain;
 // Generated Mar 4, 2018 2:56:35 PM by Hibernate Tools 4.3.5.Final
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +32,9 @@ public class Course implements java.io.Serializable {
 	private byte courseCredits;
 	private String courseLinktoSyllabus;
 	private String courseVersionCode;
+	@DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
 	private Date corseIntroducedDate;
+	@DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
 	private Date courseAppliedYear;
 	private Byte courseAppliedSemester;
 	private boolean courseIsused;

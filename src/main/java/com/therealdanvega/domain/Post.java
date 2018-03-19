@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.therealdanvega.json.JsonDateSerializer;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -31,8 +32,9 @@ public class Post {
 	
 	private String slug;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date postedOn;
+//	@Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    private Date postedOn;
 	
 	@ElementCollection
 	private List<String> keywords;

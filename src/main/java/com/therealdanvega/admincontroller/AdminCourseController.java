@@ -39,7 +39,7 @@ public class AdminCourseController {
 	}
 	
 	@RequestMapping("/admin/course/edit/{id}")
-	public String edit(@PathVariable Integer id, Model model) {
+	public String edit(@PathVariable int id, Model model) {
 		model.addAttribute("course", courseService.getById(id));
 		return "courses/postForm";
 	}
