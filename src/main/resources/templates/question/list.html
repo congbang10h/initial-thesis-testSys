@@ -21,10 +21,9 @@
 					<th>STT</th>
 					<th>Câu hỏi</th>
 					<th>Mức độ</th>
-					<th>Author</th>
-					<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th>Xem</th>
+					<th>Sửa</th>
+					<th>Xóa</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,9 +31,6 @@
 					<td th:text="${question.questionId}">Question ID</td>
 					<td th:utext="${question.questionDesc}">Question Desc</td>
 					<td th:text="${question.bloomLevel.bloomLevelDesc}">BloomLevel Desc</td>
-					<!--<td th:text="${#calendars.format(post.postedOn,'M/dd/yyyy hh:mm:ss a')}">posted on</td>-->
-					<!--<td th:text="${post.slug}">slug</td>-->
-					<!--<td th:text="${post.author.firstName + ' ' + post.author.lastName}">author</td>-->
 					<td><a href="#" th:href="@{/admin/question} + ${question.questionId}">View</a></td>
 					<td><a href="#" th:href="@{/admin/question/edit/} + ${question.questionId}">Edit</a></td>
 					<td><a href="#" th:href="@{/admin/question/delete/} + ${question.questionId}">Delete</a></td>

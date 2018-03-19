@@ -10,4 +10,6 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
 	List<Course> findAllByOrderByCourseCodeAsc();
 
+	List<Course> findByCourseNameVnContaining(String q);
+
 }

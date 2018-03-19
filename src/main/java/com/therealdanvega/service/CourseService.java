@@ -33,4 +33,6 @@ public class CourseService {
 	public Course save(Course course) {
 		return courseRepository.save(course);
 	}
+
+	public List<Course> search(String g){return courseRepository.findByCourseNameVnContaining(g);}
 }

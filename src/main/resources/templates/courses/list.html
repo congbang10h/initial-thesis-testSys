@@ -14,19 +14,23 @@
 		<div th:if="${message}" class="alert alert-success" role="alert">
 			<p th:text="${message}">success message</p>
 		</div>
+
+		<form class="form-inline pull-right" action="#" th:action="@{/admin/course/search}" method="GET">
+			<div class="form-group">
+				<input type="text" class="form-control" name="q" placeholder="Type courses name..." />
+			</div>
+			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
 		
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Course Code</th>
-					<th>Course Name VN</th>
-					<th>Course Name EN</th>
-					<th>Course Credits</th>
-					<th>Syllabus</th>
-					<th>Course Version Code</th>
-					<th>Course Version Code</th>
-					<th>Course Version Code</th>
-					
+					<th>Mã khóa học</th>
+					<th>Tên khóa học (VN)</th>
+					<th>Tên khóa học (EN)</th>
+					<th>Tín chỉ</th>
+					<th>Đề cương</th>
+					<th>Phiên bản</th>
 					<th>View</th>
 					<th>Edit</th>
 					<th>Delete</th>

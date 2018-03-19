@@ -13,7 +13,7 @@
 		<br/>
 
 		<form class="form-horizontal" th:object="${question}" th:action="@{/admin/question/save}" method="question">
-			<div th:class="form-group" th:classappend="${#fields.hasErrors('questio')}? 'has-error'">
+			<div th:class="form-group" th:classappend="${#fields.hasErrors('question')}? 'has-error'">
 				<label class="col-sm-2 control-label">Question Description <span class="required">*</span></label>
 				<div class="col-md-10">
 					<input type="text" class="form-control" th:field="*{questionDesc}"/>
