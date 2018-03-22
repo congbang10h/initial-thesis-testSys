@@ -14,6 +14,16 @@
 		<div th:if="${message}" class="alert alert-success" role="alert">
 			<p th:text="${message}">success message</p>
 		</div>
+
+		<a th:href="@{/admin/question/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Add New Course</a>
+		<br/><br/>
+
+		<form class="form-inline pull-right" action="#" th:action="@{/admin/question/search}" method="GET">
+			<div class="form-group">
+				<input type="text" class="form-control" name="q" placeholder="Type question name..." />
+			</div>
+			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
 		
 		<table class="table table-striped">
 			<thead>
@@ -21,6 +31,7 @@
 					<th>STT</th>
 					<th>Câu hỏi</th>
 					<th>Mức độ</th>
+					<th>Loại câu hỏi</th>
 					<th>Xem</th>
 					<th>Sửa</th>
 					<th>Xóa</th>
@@ -31,6 +42,7 @@
 					<td th:text="${question.questionId}">Question ID</td>
 					<td th:utext="${question.questionDesc}">Question Desc</td>
 					<td th:text="${question.bloomLevel.bloomLevelDesc}">BloomLevel Desc</td>
+					<td th:text="${question.questionTypeDict.questionTypeCode}">questionTypeCode</td>
 					<td><a href="#" th:href="@{/admin/question} + ${question.questionId}">View</a></td>
 					<td><a href="#" th:href="@{/admin/question/edit/} + ${question.questionId}">Edit</a></td>
 					<td><a href="#" th:href="@{/admin/question/delete/} + ${question.questionId}">Delete</a></td>
@@ -38,8 +50,7 @@
 			</tbody>
 		</table>
 		
-		<a th:href="@{/admin/question/create}">Add New Post</a>
-		<br/><br/>
+
 
 		<p th:if="${questions.size() == 0}">
 			<div class="alert alert-warning" role="alert">No Posts Found.</div>

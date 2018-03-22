@@ -13,13 +13,54 @@
 		<br/>
 
 		<form class="form-horizontal" th:object="${question}" th:action="@{/admin/question/save}" method="question">
-			<div th:class="form-group" th:classappend="${#fields.hasErrors('question')}? 'has-error'">
+			<div th:class="form-group" th:classappend="${#fields.hasErrors('questionDesc')}? 'has-error'">
 				<label class="col-sm-2 control-label">Question Description <span class="required">*</span></label>
 				<div class="col-md-10">
 					<input type="text" class="form-control" th:field="*{questionDesc}"/>
-					<span th:if="${#fields.hasErrors('title')}" th:errors="*{questionDesc}" th:class="help-block"> Question Description </span>
+					<span th:if="${#fields.hasErrors('questionDesc')}" th:errors="*{questionDesc}" th:class="help-block"> Question Description </span>
 				</div>
 			</div>
+
+            <div th:class="form-group" th:classappend="${#fields.hasErrors('bloomLevel')}? 'has-error'">
+                <label class="col-sm-2 control-label">Bloom Level<span class="required">*</span></label>
+                <div class="col-md-10">
+                    <select class="form-control" th:field="*{bloomLevel}">
+                        <option value="">Select Bloom Level</option>
+                        <option th:each="bloomLevel : ${bloomLevels}" th:value="${bloomLevel.bloomLevelId}" th:text="${bloomLevel.bloomLevelDesc}">Bloom Level</option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('bloomLevel')}" th:errors="*{bloomLevel}" th:class="help-block">Bloom Level Errors</span>
+                </div>
+            </div>
+
+            <!--<div th:class="form-group" th:classappend="${#fields.hasErrors('author')}? 'has-error'">-->
+                <!--<label class="col-sm-2 control-label">Author <span class="required">*</span></label>-->
+                <!--<div class="col-md-10">-->
+                    <!--<select class="form-control" th:field="*{author}">-->
+                        <!--<option value="">Select Author</option>-->
+                        <!--<option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName + ' ' + author.lastName}">Authors</option>-->
+                    <!--</select>-->
+                    <!--<span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" th:class="help-block">Author Errors</span>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div th:class="form-group" th:classappend="${#fields.hasErrors('questionTypeDict')}? 'has-error'">
+                <label class="col-sm-2 control-label">questionTypeDict <span class="required">*</span></label>
+                <div class="col-md-10">
+                    <select class="form-control" th:field="*{questionTypeDict}">
+                        <option value="">Select questionTypeDict</option>
+                        <option th:each="questionTypeDict : ${questionTypeDicts}" th:value="${questionTypeDict.questionTypeId}" th:text="${questionTypeDict.questionTypeCode}">questionTypeCode</option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('questionTypeDict')}" th:errors="*{questionTypeDict}" th:class="help-block">questionTypeDict Errors</span>
+                </div>
+            </div>
+
+            <div th:class="form-group" th:classappend="${#fields.hasErrors('questionDesc')}? 'has-error'">
+                <label class="col-sm-2 control-label">Question Description <span class="required">*</span></label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" th:field="*{questionDesc}"/>
+                    <span th:if="${#fields.hasErrors('questionDesc')}" th:errors="*{questionDesc}" th:class="help-block"> Question Description </span>
+                </div>
+            </div>
 
 			<button type="submit" class="btn btn-primary pull-right">Submit</button>
 		</form>

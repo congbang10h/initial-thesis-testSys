@@ -15,6 +15,9 @@
 			<p th:text="${message}">success message</p>
 		</div>
 
+		<a th:href="@{/admin/course/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Add New Course</a>
+		<br/><br/>
+
 		<form class="form-inline pull-right" action="#" th:action="@{/admin/course/search}" method="GET">
 			<div class="form-group">
 				<input type="text" class="form-control" name="q" placeholder="Type courses name..." />
@@ -31,9 +34,9 @@
 					<th>Tín chỉ</th>
 					<th>Đề cương</th>
 					<th>Phiên bản</th>
-					<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th>Xem</th>
+					<th>Sửa</th>
+					<th>Xóa</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -44,19 +47,12 @@
 					<td th:text="${course.courseCredits}">course_name_vn</td>
 					<td th:text="${course.courseLinktoSyllabus}">course_linkto_syllabus</td>
 					<td th:text="${course.courseVersionCode}">course_linkto_syllabus</td>
-					
-					<!--<td th:text="${#calendars.format(course.corseIntroducedDate,'dd-MM-yyyy')}">posted on</td>-->
-					<!--<td th:text="${#calendars.format(course.courseAppliedYear,'dd-MM-yyyy')}">posted on</td>-->
-				<!---->
 					<td><a href="#" th:href="@{/admin/course/} + ${course.courseId}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 					<td><a href="#" th:href="@{/admin/course/edit/} + ${course.courseId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a href="#" th:href="@{/admin/course/delete/} + ${course.courseId}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 			</tbody>
 		</table>
-		
-		<a th:href="@{/admin/course/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Add New Course</a>
-		<br/><br/>
 		
 		<p th:if="${courses.size() == 0}">
 			<div class="alert alert-warning" role="alert">No Posts Found.</div>

@@ -42,7 +42,5 @@ public class PostService {
 		return postRepository.findOne(id);
 	}
 	
-	public void deleteById(Long id) {
-		postRepository.delete(id);
-	}
+	public void deleteById(Long id) { postRepository.delete(id); }
 }

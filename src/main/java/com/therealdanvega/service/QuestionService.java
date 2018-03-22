@@ -32,4 +32,5 @@ public class QuestionService {
         return questionRepository.save(question);
     }
 
+    public List<Question> search(String g){return questionRepository.findByQuestionDescContaining(g);}
 }

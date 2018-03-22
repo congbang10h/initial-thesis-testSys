@@ -1,9 +1,11 @@
 package com.therealdanvega.controller;
 
 import com.therealdanvega.domain.Question;
+import com.therealdanvega.domain.QuestionTypeDict;
 import com.therealdanvega.repository.BloomLevelRepository;
 import com.therealdanvega.service.BloomLevelService;
 import com.therealdanvega.service.QuestionService;
+import com.therealdanvega.service.QuestionTypeDictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -19,12 +22,14 @@ import javax.validation.Valid;
 public class QuestionController {
     private QuestionService questionService;
     private BloomLevelService bloomLevelService;
+    private QuestionTypeDictService questionTypeDictService;
 
     @Autowired
 
-    public QuestionController(QuestionService questionService, BloomLevelService bloomLevelService) {
+    public QuestionController(QuestionService questionService, BloomLevelService bloomLevelService, QuestionTypeDictService questionTypeDictService) {
         this.questionService = questionService;
         this.bloomLevelService = bloomLevelService;
+        this.questionTypeDictService = questionTypeDictService;
     }
 
     @RequestMapping("/admin/questions")
@@ -60,6 +65,18 @@ public class QuestionController {
     @RequestMapping("/admin/question/create")
     public String create(Model model) {
         model.addAttribute("question", new Question());
-        return "questions/questionForm";
+        model.addAttribute("bloomLevels", bloomLevelService.list());
+        model.addAttribute("questionTypeDicts", questionTypeDictService.list());
+        return "question/questionForm";
+    }
+
+    @RequestMapping(value = "admin/question/search", method = RequestMethod.GET)
+    public String search(@RequestParam("q") String q, Model model) {
+        if (q.equals("")) {
+            return "redirect:/admin/questions";
+        }
+
+        model.addAttribute("questions", questionService.search(q));
+        return "question/list";
     }
 }

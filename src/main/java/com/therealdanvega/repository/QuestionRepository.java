@@ -11,4 +11,6 @@ public interface QuestionRepository extends CrudRepository<Question, Integer>{
 
     List<Question> findAllByOrderByQuestionIdAsc();
 
+    List<Question> findByQuestionDescContaining(String q);
+
 }
