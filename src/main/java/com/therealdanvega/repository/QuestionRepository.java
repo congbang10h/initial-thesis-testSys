@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface QuestionRepository extends CrudRepository<Question, Integer>{
 
-    List<Question> findAllByOrderByQuestionIdAsc();
+    List<Question> findAllByOrderByQuestionIdDesc();
 
     List<Question> findByQuestionDescContaining(String q);
 

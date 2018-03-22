@@ -17,7 +17,7 @@ public class QuestionService {
     }
 
     public List<Question> list(){
-        return questionRepository.findAllByOrderByQuestionIdAsc();
+        return questionRepository.findAllByOrderByQuestionIdDesc();
     }
 
     public void deleteById(Integer id) {

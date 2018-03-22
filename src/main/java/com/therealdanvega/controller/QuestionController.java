@@ -41,23 +41,26 @@ public class QuestionController {
     @RequestMapping("/admin/question/delete/{id}")
     public String delete(@PathVariable Integer id, Model model, RedirectAttributes redirectAttrs) {
         questionService.deleteById(id);
-        redirectAttrs.addFlashAttribute("message", "question was deleted!");
+        redirectAttrs.addFlashAttribute("message", "Câu hỏi đã được xóa thành công!!");
         return "redirect:/admin/questions";
     }
 
     @RequestMapping("/admin/question/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("question", questionService.getById(id));
+        model.addAttribute("bloomLevels", bloomLevelService.list());
+        model.addAttribute("questionTypeDicts", questionTypeDictService.list());
         return "question/questionForm";
     }
 
-    @RequestMapping(value = "admin/question/save", method = RequestMethod.POST)
-    public String save(@Valid Question question, BindingResult bindingResult, Model model) {
+    @RequestMapping(value = "admin/question/save", method = RequestMethod.GET)
+    public String save(@Valid Question question, BindingResult bindingResult, Model model, RedirectAttributes redirectAttrs) {
         if(bindingResult.hasErrors()) {
             return "question/questionForm";
         }
         else {
             Question savedquestion = questionService.save(question);
+            redirectAttrs.addFlashAttribute("message", "Câu hỏi đã được cập nhật thành công!!");
             return "redirect:/admin/questions/";
         }
     }
