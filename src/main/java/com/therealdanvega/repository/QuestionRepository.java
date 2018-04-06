@@ -13,4 +13,5 @@ public interface QuestionRepository extends CrudRepository<Question, Integer>{
 
     List<Question> findByQuestionDescContaining(String q);
 
+//    List<Question> findByQuestionTypeDictContaining(Integer i);
 }

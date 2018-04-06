@@ -8,14 +8,15 @@
 
 	<div layout:fragment="content">
 
-		<h2>Create New Post</h2>
+		<h2>Thêm/Sửa môn học</h2>
 		<br />
 
 		<form class="form-horizontal" th:object="${course}"
 			th:action="@{/admin/course/save}" method="post">
+            <input type="hidden" th:field="*{courseId}" />
 			<div th:class="form-group"
 				th:classappend="${#fields.hasErrors('courseCode')}? 'has-error'">
-				<label class="col-sm-2 control-label">Course Code <span
+				<label class="col-sm-2 control-label">Mã khóa học<span
 					class="required">*</span></label>
 				<div class="col-md-10">
 					<input type="text" class="form-control" th:field="*{courseCode}" />
@@ -27,7 +28,7 @@
 			
 			<div th:class="form-group"
 				th:classappend="${#fields.hasErrors('courseNameVn')}? 'has-error'">
-				<label class="col-sm-2 control-label">Course Name VN <span
+				<label class="col-sm-2 control-label">Tên môn học<span
 					class="required">*</span></label>
 				<div class="col-md-10">
 					<input type="text" class="form-control" th:field="*{courseNameVn}" />
@@ -40,7 +41,7 @@
 
 			<div th:class="form-group"
 				th:classappend="${#fields.hasErrors('courseNameEn')}? 'has-error'">
-				<label class="col-sm-2 control-label">Course Name English <span
+				<label class="col-sm-2 control-label">Tên môn học (EN) <span
 					class="required">*</span></label>
 				<div class="col-md-10">
 					<input type="text" class="form-control" th:field="*{courseNameEn}" />
@@ -52,7 +53,7 @@
 			
 			<div th:class="form-group"
 				th:classappend="${#fields.hasErrors('courseCredits')}? 'has-error'">
-				<label class="col-sm-2 control-label">Course Credits <span
+				<label class="col-sm-2 control-label">Tín chỉ <span
 					class="required">*</span></label>
 				<div class="col-md-10">
 					<input type="number" class="form-control" th:field="*{courseCredits}" />
@@ -63,8 +64,20 @@
 			</div>
 
 			<div th:class="form-group"
+				 th:classappend="${#fields.hasErrors('courseLinktoSyllabus')}? 'has-error'">
+				<label class="col-sm-2 control-label">Giáo trình<span
+						class="required"></span></label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{courseLinktoSyllabus}" />
+					<span th:if="${#fields.hasErrors('courseLinktoSyllabus')}"
+						  th:errors="*{courseLinktoSyllabus}" th:class="help-block">courseLinktoSyllabus
+						Errors</span>
+				</div>
+			</div>
+
+			<div th:class="form-group"
 				 th:classappend="${#fields.hasErrors('courseVersionCode')}? 'has-error'">
-				<label class="col-sm-2 control-label">Course Version Code <span
+				<label class="col-sm-2 control-label">Phiên bản<span
 						class="required">*</span></label>
 				<div class="col-md-10">
 					<input type="text" class="form-control" th:field="*{courseVersionCode}" />
@@ -76,7 +89,7 @@
 
 			<div th:class="form-group"
 				th:classappend="${#fields.hasErrors('corseIntroducedDate')}? 'has-error'">
-				<label class="col-sm-2 control-label">corseIntroducedDate <span
+				<label class="col-sm-2 control-label">Ngày giới thiệu<span
 					class="required">*</span></label>
 				<div class="col-md-10">
 					<input type="date" class="form-control" th:field="*{corseIntroducedDate}" />
@@ -88,7 +101,7 @@
 
             <div th:class="form-group"
                  th:classappend="${#fields.hasErrors('courseAppliedYear')}? 'has-error'">
-                <label class="col-sm-2 control-label">courseAppliedYear <span
+                <label class="col-sm-2 control-label">Ngày áp dụng <span
                         class="required">*</span></label>
                 <div class="col-md-10">
                     <input type="date" class="form-control" th:field="*{courseAppliedYear}" />

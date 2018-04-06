@@ -20,6 +20,10 @@ public class QuestionService {
         return questionRepository.findAllByOrderByQuestionIdDesc();
     }
 
+//    public List<Question> listByQgroupId(Integer i){
+//        return questionRepository.findByQuestionTypeDictContaining(i);
+//    }
+
     public void deleteById(Integer id) {
         questionRepository.delete(id);
     }

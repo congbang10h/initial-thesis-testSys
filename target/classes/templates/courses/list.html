@@ -32,7 +32,7 @@
 					<th>Tên khóa học (VN)</th>
 					<th>Tên khóa học (EN)</th>
 					<th>Tín chỉ</th>
-					<th>Đề cương</th>
+					<th>Ngày áp dụng</th>
 					<th>Phiên bản</th>
 					<th>Xem</th>
 					<th>Sửa</th>
@@ -41,12 +41,12 @@
 			</thead>
 			<tbody>
 				<tr th:each="course : ${courses}">
-					<td th:text="${course.courseCode}">course_code</td>
-					<td th:text="${course.courseNameVn}">course_name_vn</td>
-					<td th:text="${course.courseNameEn}">course_name_en</td>
-					<td th:text="${course.courseCredits}">course_name_vn</td>
-					<td th:text="${course.courseLinktoSyllabus}">course_linkto_syllabus</td>
-					<td th:text="${course.courseVersionCode}">course_linkto_syllabus</td>
+					<td th:text="${course.courseCode}"></td>
+					<td th:text="${course.courseNameVn}"></td>
+					<td th:text="${course.courseNameEn}"></td>
+					<td th:text="${course.courseCredits}"></td>
+					<td th:text="${course.getCourseAppliedYear()}"></td>
+					<td th:text="${course.courseVersionCode}"></td>
 					<td><a href="#" th:href="@{/admin/course/} + ${course.courseId}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 					<td><a href="#" th:href="@{/admin/course/edit/} + ${course.courseId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a href="#" th:href="@{/admin/course/delete/} + ${course.courseId}"><span class="glyphicon glyphicon-trash"></span></a></td>

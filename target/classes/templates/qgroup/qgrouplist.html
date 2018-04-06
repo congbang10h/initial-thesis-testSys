@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layouts/main">
+<head>
+    <title>List Posts</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <h2>Nhóm câu hỏi</h2>
+
+    <div th:if="${message}" class="alert alert-success" role="alert">
+        <p th:text="${message}">success message</p>
+    </div>
+
+    <a th:href="@{/admin/qgroup/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Thêm câu hỏi</a>
+    <br/><br/>
+
+    <form class="form-inline pull-right" action="#" th:action="@{/admin/qgroup/search}" method="GET">
+        <div class="form-group">
+            <input type="text" class="form-control" name="q" placeholder="Type question group name..." />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Họ</th>
+            <th>Tên</th>
+            <th>Mô tả</th>
+            <th>Xem</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="qgroup : ${qgroups}">
+            <td th:text="${qgroup.getQuestionGroupId()}">STT</td>
+            <td th:text="${qgroup.user.getUserFirstName()}">Họ</td>
+            <td th:text="${qgroup.user.getUserLastName()}">Tên</td>
+            <td th:utext="${qgroup.getQuestionGroupDesc()}">Mô tả</td>
+            <td><a href="#" th:href="@{/admin/qgroup/} + ${qgroup.getQuestionGroupId()}">View</a></td>
+            <td><a href="#" th:href="@{/admin/qgroup/edit/} + ${qgroup.getQuestionGroupId()}">Edit</a></td>
+            <td><a href="#" th:href="@{/admin/qgroup/delete/} + ${qgroup.getQuestionGroupId()}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <p th:if="${qgroups.size() == 0}">
+    <div class="alert alert-warning" role="alert">No Posts Found.</div>
+    </p>
+
+</div>
+
+</body>
+</html>
