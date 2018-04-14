@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layouts/main">
+<head>
+	<title>List universities</title>
+</head>
+<body>
+		
+	<div layout:fragment="content">
+	
+		<h2>universitys</h2>
+		
+		<div th:if="${message}" class="alert alert-success" role="alert">
+			<p th:text="${message}">success message</p>
+		</div>
+
+		<a th:href="@{/admin/university/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Add New university</a>
+		<br/><br/>
+
+		<form class="form-inline pull-right" action="#" th:action="@{/admin/university/search}" method="GET">
+			<div class="form-group">
+				<input type="text" class="form-control" name="q" placeholder="Type universitys name..." />
+			</div>
+			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Mã trường</th>
+					<th>Tên trường</th>
+					<th>Tên viết tắt</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="university : ${universities}">
+					<td th:text="${university.univCode}"></td>
+					<td th:text="${university.univNameVn}"></td>
+					<td th:text="${university.univNameShort}"></td>
+					<td><a href="#" th:href="@{/admin/university/} + ${university.univId}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+					<td><a href="#" th:href="@{/admin/university/edit/} + ${university.univId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a href="#" th:href="@{/admin/university/delete/} + ${university.univId}"><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p th:if="${universities.size() == 0}">
+			<div class="alert alert-warning" role="alert">No University Found.</div>
+		</p>
+		
+	</div>
+		
+</body>
+</html>
