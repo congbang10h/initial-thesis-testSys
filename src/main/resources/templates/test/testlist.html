@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layouts/main">
+<head>
+	<title>Đề thi</title>
+</head>
+<body>
+		
+	<div layout:fragment="content">
+	
+		<h2>Danh sách đề thi</h2>
+		
+		<div th:if="${message}" class="alert alert-success" role="alert">
+			<p th:text="${message}">success message</p>
+		</div>
+
+		<a th:href="@{/admin/test/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Thêm đề thi mới</a>
+		<br/><br/>
+
+		<form class="form-inline pull-right" action="#" th:action="@{/admin/test/search}" method="GET">
+			<div class="form-group">
+				<input type="text" class="form-control" name="q" placeholder="Type universitys name..." />
+			</div>
+			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Họ</th>
+					<th>Tên</th>
+					<th>Mã môn</th>
+					<th>Tên môn</th>
+					<th>Ngày tạo</th>
+					<th>Giờ bắt đầu</th>
+					<th>Giờ kết thúc</th>
+					<th>Thời gian</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="test : ${tests}">
+					<td th:text="${test.user.getUserLastName()}"></td>
+					<td th:text="${test.user.getUserFirstName()}"></td>
+					<td th:text="${test.course.getCourseCode()}"></td>
+					<td th:text="${test.course.getCourseNameVn()}"></td>
+					<td th:text="${test.testCreationTime}"></td>
+					<td th:text="${test.testStartTime}"></td>
+					<td th:text="${test.testEndTime}"></td>
+					<td th:text="${test.testDuration}"></td>
+					<td><a href="#" th:href="@{/admin/test/} + ${test.testId}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+					<td><a href="#" th:href="@{/admin/test/edit/} + ${test.testId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a href="#" th:href="@{/admin/test/delete/} + ${test.testId}"><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p th:if="${tests.size() == 0}">
+			<div class="alert alert-warning" role="alert">No Tests Found.</div>
+		</p>
+		
+	</div>
+		
+</body>
+</html>

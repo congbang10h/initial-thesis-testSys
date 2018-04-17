@@ -47,13 +47,20 @@
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Danh mục<span class="caret"></span></a>
 				            <ul class="dropdown-menu">
 				                <li><a href="/admin/posts/">Bài viết</a></li>
-				                <li><a href="/admin/courses/">Môn học</a></li>
 								<li><a href="/admin/questions/">Câu hỏi</a></li>
-								<li><a href="/admin/qgroups/">Nhóm câu hỏi</a></li>
 								<li><a href="/admin/universities/">Trường đại học</a></li>
 								<li><a href="/admin/falcuty/">Khoa</a></li>
 				            </ul>
 				        </li>
+
+						<li class="dropdown" th:class="${controllerName.startsWith('Admin')} ? 'dropdown active' : 'dropdown'" sec:authorize="hasRole('ROLE_ADMIN')">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Môn học<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/admin/qgroups/">Nhóm câu hỏi</a></li>
+								<li><a href="/admin/tests/">Đề thi</a></li>
+								<li><a href="/admin/courses/">Môn học</a></li>
+							</ul>
+						</li>
 				    </ul>
 				    <div class="navbar-text navbar-right">
 			            Xin chào <span sec:authentication="name">Khách</span> |
