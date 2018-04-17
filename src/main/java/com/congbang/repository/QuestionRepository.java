@@ -1,0 +1,17 @@
+package com.congbang.repository;
+
+import com.congbang.domain.Question;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface QuestionRepository extends CrudRepository<Question, Integer>{
+
+    List<Question> findAllByOrderByQuestionIdDesc();
+
+    List<Question> findByQuestionDescContaining(String q);
+
+//    List<Question> findByQuestionTypeDictContaining(Integer i);
+}
