@@ -4,6 +4,7 @@ import com.congbang.domain.Question;
 import com.congbang.domain.QuestionTypeDict;
 import com.congbang.repository.BloomLevelRepository;
 import com.congbang.service.BloomLevelService;
+import com.congbang.service.QuestionItemService;
 import com.congbang.service.QuestionService;
 import com.congbang.service.QuestionTypeDictService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +24,35 @@ public class QuestionController {
     private QuestionService questionService;
     private BloomLevelService bloomLevelService;
     private QuestionTypeDictService questionTypeDictService;
+    private QuestionItemService questionItemService;
 
     @Autowired
-
-    public QuestionController(QuestionService questionService, BloomLevelService bloomLevelService, QuestionTypeDictService questionTypeDictService) {
+    public QuestionController(QuestionService questionService, BloomLevelService bloomLevelService, QuestionTypeDictService questionTypeDictService, QuestionItemService questionItemService) {
         this.questionService = questionService;
         this.bloomLevelService = bloomLevelService;
         this.questionTypeDictService = questionTypeDictService;
+        this.questionItemService = questionItemService;
     }
 
     @RequestMapping("/admin/questions")
     public String list(Model model) {
         model.addAttribute("questions", questionService.list());
         return "question/list";
+    }
+
+//    @RequestMapping("/admin/questions/detail")
+//    public String detail(Model model) {
+//        model.addAttribute("questions", questionService.list());
+//        return "question/view";
+//    }
+
+    @RequestMapping("/admin/question/{id}")
+    public String view(@PathVariable Integer id, Model model) {
+        model.addAttribute("question", questionService.getById(id));
+        model.addAttribute("bloomLevels", bloomLevelService.list());
+        model.addAttribute("questionTypeDicts", questionTypeDictService.list());
+        model.addAttribute("questionItems", questionItemService.getByQuestionId(id));
+        return "question/view";
     }
 
     @RequestMapping("/admin/question/delete/{id}")

@@ -43,7 +43,7 @@
 					<td th:utext="${question.questionDesc}">Question Desc</td>
 					<td th:text="${question.bloomLevel.bloomLevelDesc}">BloomLevel Desc</td>
 					<td th:text="${question.questionTypeDict.questionTypeCode}">questionTypeCode</td>
-					<td><a href="#" th:href="@{/admin/question} + ${question.questionId}">View</a></td>
+					<td><a href="#" th:href="@{/admin/question/} + ${question.questionId}">View</a></td>
 					<td><a href="#" th:href="@{/admin/question/edit/} + ${question.questionId}">Edit</a></td>
 					<td><a href="#" th:href="@{/admin/question/delete/} + ${question.questionId}">Delete</a></td>
 				</tr>
