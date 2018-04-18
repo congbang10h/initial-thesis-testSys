@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layouts/main">
+<head>
+	<title>List Univ Item</title>
+</head>
+<body>
+		
+	<div layout:fragment="content">
+	
+		<h2>Univ mission item</h2>
+		
+		<div th:if="${message}" class="alert alert-success" role="alert">
+			<p th:text="${message}">success message</p>
+		</div>
+
+		<a th:href="@{/admin/umitem/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Thêm</a>
+		<br/><br/>
+
+		<form class="form-inline pull-right" action="#" th:action="@{/admin/umitem/search}" method="GET">
+			<div class="form-group">
+				<input type="text" class="form-control" name="q" placeholder="Type universitys name..." />
+			</div>
+			<button type="submit" class="btn btn-primary">Tìm</button>
+		</form>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Mã số</th>
+					<th>Mô tả</th>
+					<th>Mô tả (En)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="umitem : ${umitems}">
+					<td th:text="${umitem.getUmiCode()}"></td>
+					<td th:utext="${umitem.getUmiDescVn()}"></td>
+					<td th:utext="${umitem.getUmiDescEn()}"></td>
+					<td><a href="#" th:href="@{'/admin/umitem/edit/' + ${umitem.umiId}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a href="#" th:href="@{/admin/umitem/delete/} + ${umitem.umiId}"><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p th:if="${umitems.size() == 0}">
+			<div class="alert alert-warning" role="alert">No University Mission Found.</div>
+		</p>
+		
+	</div>
+		
+</body>
+</html>

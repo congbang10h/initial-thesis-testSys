@@ -38,9 +38,9 @@
 					<td th:text="${univmission.umCode}"></td>
 					<td th:text="${univmission.umDate}"></td>
 					<td><input type="checkbox" name="mycheckbox" th:checked="${univmission.umIsused}" /></td>
-					<td><a href="#" th:href="@{/admin/mission/} + ${univmission.umId}">Xem</a></td>
-					<td><a href="#" th:href="@{/admin/mission/edit/} + ${univmission.umId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a href="#" th:href="@{/admin/mission/delete/} + ${univmission.umId}"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a href="#" th:href="@{/admin/univmission/view/} + ${univmission.umId}">Xem</a></td>
+					<td><a href="#" th:href="@{/admin/univmission/edit/} + ${univmission.umId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a href="#" th:href="@{/admin/univmission/delete/} + ${univmission.umId}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 			</tbody>
 		</table>
