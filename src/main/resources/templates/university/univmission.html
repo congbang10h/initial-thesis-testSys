@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layouts/main">
+<head>
+	<title>List universities</title>
+</head>
+<body>
+		
+	<div layout:fragment="content">
+	
+		<h2>Univ mission</h2>
+		
+		<div th:if="${message}" class="alert alert-success" role="alert">
+			<p th:text="${message}">success message</p>
+		</div>
+
+		<a th:href="@{/admin/univmission/create}" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>Thêm</a>
+		<br/><br/>
+
+		<form class="form-inline pull-right" action="#" th:action="@{/admin/univmission/search}" method="GET">
+			<div class="form-group">
+				<input type="text" class="form-control" name="q" placeholder="Type universitys name..." />
+			</div>
+			<button type="submit" class="btn btn-primary">Tìm</button>
+		</form>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Mã số</th>
+					<th>Ngày tạo</th>
+					<th>Sử dụng</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="univmission : ${univmissions}">
+					<td th:text="${univmission.umCode}"></td>
+					<td th:text="${univmission.umDate}"></td>
+					<td><input type="checkbox" name="mycheckbox" th:checked="${univmission.umIsused}" /></td>
+					<td><a href="#" th:href="@{/admin/mission/} + ${univmission.umId}">Xem</a></td>
+					<td><a href="#" th:href="@{/admin/mission/edit/} + ${univmission.umId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a href="#" th:href="@{/admin/mission/delete/} + ${univmission.umId}"><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p th:if="${univmissions.size() == 0}">
+			<div class="alert alert-warning" role="alert">No University Mission Found.</div>
+		</p>
+		
+	</div>
+		
+</body>
+</html>

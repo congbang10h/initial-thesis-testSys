@@ -1,6 +1,7 @@
 package com.congbang.service;
 
 import com.congbang.domain.University;
+import com.congbang.repository.UnivMissionRepository;
 import com.congbang.repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class UniversityService {
     public UniversityService(UniversityRepository universityRepository) {
         this.universityRepository = universityRepository;
     }
+
 
     public List<University> list(){
         return universityRepository.findAllByOrderByUnivCodeAsc();
@@ -32,5 +34,7 @@ public class UniversityService {
         return universityRepository.save(university);
     }
 
-   public List<University> search(String g){return universityRepository.findByUnivNameVnContaining(g);}
+    public List<University> search(String g){return universityRepository.findByUnivNameVnContaining(g);}
+
+
 }

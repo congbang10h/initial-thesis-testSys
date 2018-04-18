@@ -38,7 +38,7 @@
 					<td th:text="${university.univCode}"></td>
 					<td th:text="${university.univNameVn}"></td>
 					<td th:text="${university.univNameShort}"></td>
-					<td><a href="#" th:href="@{/admin/university/} + ${university.univId}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+					<td><a href="#" th:href="@{/admin/university/mission/} + ${university.univId}">Sứ mệnh</a></td>
 					<td><a href="#" th:href="@{/admin/university/edit/} + ${university.univId}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a href="#" th:href="@{/admin/university/delete/} + ${university.univId}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
