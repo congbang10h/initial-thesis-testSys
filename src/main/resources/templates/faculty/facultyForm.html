@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layouts/main">
+<head>
+<title>Add/Edit New Post</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<h2>Thêm/Sửa môn học</h2>
+		<br />
+
+		<form class="form-horizontal" th:object="${faculty}"
+			th:action="@{/admin/faculty/save}" method="post">
+            <input type="hidden" th:field="*{facultyId}" />
+			<div th:class="form-group"
+				th:classappend="${#fields.hasErrors('facultyCode')}? 'has-error'">
+				<label class="col-sm-2 control-label">Mã khoa<span
+					class="required">*</span></label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{facultyCode}" />
+					<span th:if="${#fields.hasErrors('facultyCode')}"
+						th:errors="*{facultyCode}" th:class="help-block">facultyCodeErrors</span>
+				</div>
+			</div>
+			
+			<div th:class="form-group"
+				th:classappend="${#fields.hasErrors('facultyNameVn')}? 'has-error'">
+				<label class="col-sm-2 control-label">Tên khoa (VN)<span
+					class="required">*</span></label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{facultyNameVn}" />
+					<span th:if="${#fields.hasErrors('facultyNameVn')}"
+						th:errors="*{facultyNameVn}" th:class="help-block">facultyNameVn
+						Errors</span>
+				</div>
+
+			</div>
+
+			<div th:class="form-group"
+				th:classappend="${#fields.hasErrors('facultyNameEn')}? 'has-error'">
+				<label class="col-sm-2 control-label">Tên khoa (EN) <span
+					class="required">*</span></label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{facultyNameEn}" />
+					<span th:if="${#fields.hasErrors('facultyNameEn')}"
+						th:errors="*{facultyNameEn}" th:class="help-block">facultyNameEn
+						Errors</span>
+				</div>
+			</div>
+
+			<div th:class="form-group" th:classappend="${#fields.hasErrors('university')}? 'has-error'">
+				<label class="col-sm-2 control-label">University <span class="required">*</span></label>
+				<div class="col-md-10">
+					<select class="form-control" th:field="*{university}">
+						<option value="">Chọn trường đại học</option>
+						<option th:each="university : ${universities}" th:value="${university.univId}" th:text="${university.univNameVn}">Tên trường</option>
+					</select>
+					<span th:if="${#fields.hasErrors('university')}" th:errors="*{university}" th:class="help-block">University Errors</span>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-primary pull-right">Submit</button>
+		</form>
+
+		<br /> <br /> <br />
+
+	</div>
+
+</body>
+</html>
